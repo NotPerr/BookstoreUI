@@ -14,6 +14,10 @@ const HotAlbumDetail = props => {
         </View>
       </View>  
       <View style={styles.headerContainerStyle}>
+        <Image
+            style={styles.starStyle}
+            source={{uri: album.stars}}
+          />
         <Text style={styles.headerTitleStyle}>{album.title}</Text>
         <Text style={styles.headerContentStyle}>{album.artist}</Text>
       </View>   
@@ -25,12 +29,12 @@ const styles = StyleSheet.create({
   cardContainerStyle: {
     borderWidth: 1,
     borderRadius: 2,
-    borderColor: "#ddd",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
-    elevation: 1,
+    borderColor: "#fff",
+    //shadowColor: "#000",
+    //shadowOffset: { width: 0, height: 2 },
+    //shadowOpacity: 0.1,
+    //shadowRadius: 2,
+    //elevation: 1,
     marginLeft: 5,
     marginRight: 5,
     marginTop: 10
@@ -54,12 +58,17 @@ const styles = StyleSheet.create({
   cardSectionStyle: {
     padding: 5,
     backgroundColor: "#fff",
-    borderColor: "#ddd",
+    //borderColor: "#ddd",
+    borderColor: "#fff",
     borderBottomWidth: 1
   },
   imageStyle: {
-    height: 130,
+    height: 200,
     width: 130,
+  },
+  starStyle: {
+    height: 15,
+    width: 100,
   }
 });
 
