@@ -1,18 +1,19 @@
 import React from "react";
-import { Text, FlatList, SectionList, StyleSheet } from "react-native";
+import { Text, FlatList, SectionList, StyleSheet, Pressable } from "react-native";
 import AlbumDetail from "./AlbumDetail";
 import HotAlbumDetail from "./HotAlbumDetail";
 import sections from "../json/album_section.json";
 
 const Albumlist = () => {
-  const renderSectionHeader = ({section}) => (
+  //const navigation = useNavigation();
+  const renderSectionHeader = ({section, navigation}) => (
     <>
       <Text style={styles.sectionHeader}>{section.title}</Text>
       {section.horizontal ? (
         <FlatList
           horizontal={true}
           data={section.data}
-          renderItem={({ item }) => <HotAlbumDetail album={item} />}
+          renderItem={({ item }) => <HotAlbumDetail album={item} navigation={navigation}/>}
           showsHorizontalScrollIndicator={false}
           keyExtractor={ item => item.title }
         />
@@ -25,6 +26,7 @@ const Albumlist = () => {
     }
     return <AlbumDetail album={item} />
   };
+
 
   return (
     <SectionList 
