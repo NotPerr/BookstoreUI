@@ -15,8 +15,8 @@ function MyStack() {
     <Stack.Navigator
    
     >
-      <Stack.Screen name="Home" component={AlbumList} />
-      <Stack.Screen name="detail" component={DetailsScreen} />
+      <Stack.Screen  options={{ title: ' ' }} name="Home" component={AlbumList} />
+      <Stack.Screen  options={{ title: ' ' }} name="detail" component={DetailsScreen} />
       
     </Stack.Navigator>
   );
