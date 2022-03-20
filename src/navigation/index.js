@@ -2,20 +2,18 @@ import React from 'react';
 import { NavigationContainer, useTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
+import { View, Text, Button, Image ,Pressable,StyleSheet,TouchableHighlight} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import Icon from 'react-native-vector-icons/FontAwesome';
 import AlbumList from "../components/AlbumList";
 import DetailsScreen from "../screens/DetailScreen";
 import SettingsScreen from '../screens/SettingsScreen';
 import BooksScreen from '../screens/BooksScreen';
-//import DisplaySettingScreen from '../screens/DisplaySettingScreen';
-//import MyTheme from '../Theme';
-
-//import albumData from "../json/albums.json";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+
+
 
 const Navigation = () => {
   return (
@@ -120,17 +118,51 @@ const MyBooks = () => {
   );
 }
 
+let wish = "#000";
 
 function MyStack() {
   return (
     <Stack.Navigator
    
     >
-      <Stack.Screen  options={{ title: ' ' }} name="Home" component={AlbumList} />
-      <Stack.Screen  options={{ title: ' ' }} name="detail" component={DetailsScreen} />
+      <Stack.Screen  options={{ 
+        title: ' ',
+        headerRight: () => (
+          
+          <Pressable onPress={() => alert('Oops!')}>
+            {/* <MaterialCommunityIcons name="search" color="#000" size={26} /> */}
+            <Image
+              style={styles.btn}
+              source={require('../../assets/btn_search.png')} 
+            />
+          </Pressable>
+        )
+    }} name="Home" component={AlbumList} />
+      <Stack.Screen  options={{ 
+        title: ' ',
+        headerRight: () => (
+          
+          <Pressable onPress={() => wish = "#6200EE"}>
+            <MaterialCommunityIcons name="bookmark" color={wish} size={26} style={styles.btn}/>
+            
+          </Pressable>
+
+          
+
+
+        )
+    }} name="detail" component={DetailsScreen} />
       
     </Stack.Navigator>
   );
 }
+ const onPress = () => wish = "#6200EE";
+
+const styles = StyleSheet.create({
+  btn: {
+    marginRight: 10,
+  },
+  
+});
 
 export default Navigation;
