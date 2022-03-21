@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { NavigationContainer, useTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { View, Text, Button, Image ,Pressable,StyleSheet,TouchableHighlight} from 'react-native';
+import { View, Text, Button, Image ,Pressable,StyleSheet,TouchableHighlight, TouchableOpacity} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import AlbumList from "../components/AlbumList";
@@ -15,7 +15,13 @@ const Tab = createBottomTabNavigator();
 
 
 
+
+
 const Navigation = () => {
+
+  
+
+
   return (
     <NavigationContainer >
       <MyTabs />
@@ -118,9 +124,17 @@ const MyBooks = () => {
   );
 }
 
-let wish = "#000";
+//let wish = "#000";
+
+
+
 
 function MyStack() {
+  const [toggle, setToggle] = useState(true);
+  const toggleFunction = () => {
+    setToggle(!toggle);
+};
+  
   return (
     <Stack.Navigator
    
@@ -142,12 +156,15 @@ function MyStack() {
         title: ' ',
         headerRight: () => (
           
-          <Pressable onPress={() => wish = "#6200EE"}>
-            <MaterialCommunityIcons name="bookmark" color={wish} size={26} style={styles.btn}/>
+          // <Pressable onPress={() => wish = "#6200EE"}>
+          //   <MaterialCommunityIcons name="bookmark" color="#000" size={26} style={styles.btn}/>
             
-          </Pressable>
+          // </Pressable>
 
-          
+          <TouchableOpacity style={styles.btn} onPress={() => toggleFunction()}>
+        <Text>{toggle ? <MaterialCommunityIcons name="bookmark-outline" color="#000" size={26} style={styles.btn}/> : 
+        <MaterialCommunityIcons name="bookmark" color="#000" size={26} style={styles.btn}/>}</Text>
+      </TouchableOpacity>
 
 
         )
